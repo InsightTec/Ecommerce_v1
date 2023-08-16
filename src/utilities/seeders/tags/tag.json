@@ -1,0 +1,42 @@
+[
+    {
+      "_id":"64870b416bee9047fe2bd18b",
+      "name": "Popular",
+      "slug": "popular",
+      "type":"public",
+      "rank":90,
+      "active":true
+    },
+    {
+        "_id":"64870b416bee9047fe2bd18c",
+        "name": "Perfect",
+        "slug": "perfect",
+        "type":"public",
+        "rank":85,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd18d",
+        "name": "Excellent",
+        "slug": "excellent",
+        "type":"public",
+        "rank":80,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd18e",
+        "name": "on Demand",
+        "slug": "on-demand",
+        "type":"public",
+        "rank":75,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd18f",
+        "name": "New",
+        "slug": "new",
+        "type":"public",
+        "rank":70,
+        "active":true
+      }
+]

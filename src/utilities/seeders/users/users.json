@@ -1,0 +1,319 @@
+[
+    {
+      "_id":"64870b416bee9047fe2bd18b",
+      "name": "super Admin 1",
+      "slug": "super-admin-1",
+      "email":"super-admin-1@gmail.com",
+      "phone":"123456789",
+      "profileImg":"super.jpg",
+      "password":"123456789",
+      "language":"english",
+      "role":"superAdmin",
+      "rank":90,
+      "active":true
+    },
+    {
+        "_id":"64870b416bee9047fe2bd18b",
+        "name": "Admin 1",
+        "slug": "admin-1",
+        "email":"admin-1@gmail.com",
+        "phone":"123456789",
+        "profileImg":"admin.jpg",
+        "password":"123456789",
+        "language":"english",
+        "role":"admin",
+        "rank":85,
+        "active":true
+      },
+     
+      {
+        "_id":"64870b416bee9047fe2bd18b",
+        "name": "user 2",
+        "slug": "user-2",
+        "email":"user-2@gmail.com",
+        "phone":"123456789",
+        "profileImg":"user.jpg",
+        "password":"123456789",
+        "language":"english",
+        "role":"user", 
+        "addresses": [
+            {
+
+              "alias": "address 1",
+              "details": "details 1",
+              "phone": "123456789",
+              "city": "city 1",
+              "postalCode": "1234",
+              "default":true,
+              "active":true
+            },
+            {
+
+              "alias": "address 2",
+              "details": "details 2",
+              "phone": "123456789",
+              "city": "city 2",
+              "postalCode": "1234",
+              "default":false,
+              "active":true
+            },
+            {
+
+              "alias": "address 3",
+              "details": "details 3",
+              "phone": "123456789",
+              "city": "city 3",
+              "postalCode": "1234",
+              "default":false,
+              "active":true
+            }
+          ],
+          "locations":[
+            {
+            "location":{"latitude":"1","longitude":"1"},
+            "default":true,
+            "active":true
+            },
+            {
+                "location":{"latitude":"1","longitude":"1"},
+                "default":false,
+                "active":true
+                }
+        ],
+        "rank":85,
+        "active":true
+      }
+      ,
+      {
+        "_id":"64870b416bee9047fe2bd18b",
+        "name": "user 3",
+        "slug": "user-3",
+        "email":"user-3@gmail.com",
+        "phone":"123456789",
+        "profileImg":"user.jpg",
+        "password":"123456789",
+        "language":"english",
+        "role":"user",
+        "addresses": [
+          {
+
+            "alias": "address 1",
+            "details": "details 1",
+            "phone": "123456789",
+            "city": "city 1",
+            "postalCode": "1234",
+            "default":true,
+            "active":true
+          },
+          {
+
+            "alias": "address 2",
+            "details": "details 2",
+            "phone": "123456789",
+            "city": "city 2",
+            "postalCode": "1234",
+            "default":false,
+            "active":true
+          },
+          {
+
+            "alias": "address 3",
+            "details": "details 3",
+            "phone": "123456789",
+            "city": "city 3",
+            "postalCode": "1234",
+            "default":false,
+            "active":true
+          }
+        ],
+        "locations":[
+          {
+          "location":{"latitude":"1","longitude":"1"},
+          "default":true,
+          "active":true
+          },
+          {
+              "location":{"latitude":"1","longitude":"1"},
+              "default":false,
+              "active":true
+              }
+      ],
+        "rank":85,
+        "active":true
+      }
+      ,
+      {
+        "_id":"64870b416bee9047fe2bd18b",
+        "name": "user 4",
+        "slug": "user-4",
+        "email":"user-4@gmail.com",
+        "phone":"123456789",
+        "profileImg":"user.jpg",
+        "password":"123456789",
+        "language":"english",
+        "role":"user",
+        "addresses": [
+          {
+
+            "alias": "address 1",
+            "details": "details 1",
+            "phone": "123456789",
+            "city": "city 1",
+            "postalCode": "1234",
+            "default":true,
+            "active":true
+          },
+          {
+
+            "alias": "address 2",
+            "details": "details 2",
+            "phone": "123456789",
+            "city": "city 2",
+            "postalCode": "1234",
+            "default":false,
+            "active":true
+          },
+          {
+
+            "alias": "address 3",
+            "details": "details 3",
+            "phone": "123456789",
+            "city": "city 3",
+            "postalCode": "1234",
+            "default":false,
+            "active":true
+          }
+        ],
+        "locations":[
+          {
+          "location":{"latitude":"1","longitude":"1"},
+          "default":true,
+          "active":true
+          },
+          {
+              "location":{"latitude":"1","longitude":"1"},
+              "default":false,
+              "active":true
+              }
+      ],
+        "rank":85,
+        "active":true
+      }
+      ,
+      {
+        "_id":"64870b416bee9047fe2bd18b",
+        "name": "user 5",
+        "slug": "user-5",
+        "email":"user-5@gmail.com",
+        "phone":"123456789",
+        "profileImg":"user.jpg",
+        "password":"123456789",
+        "language":"english",
+        "role":"user",
+        "addresses": [
+          {
+
+            "alias": "address 1",
+            "details": "details 1",
+            "phone": "123456789",
+            "city": "city 1",
+            "postalCode": "1234",
+            "default":true,
+            "active":true
+          },
+          {
+
+            "alias": "address 2",
+            "details": "details 2",
+            "phone": "123456789",
+            "city": "city 2",
+            "postalCode": "1234",
+            "default":false,
+            "active":true
+          },
+          {
+
+            "alias": "address 3",
+            "details": "details 3",
+            "phone": "123456789",
+            "city": "city 3",
+            "postalCode": "1234",
+            "default":false,
+            "active":true
+          }
+        ],
+        "locations":[
+          {
+          "location":{"latitude":"1","longitude":"1"},
+          "default":true,
+          "active":true
+          },
+          {
+              "location":{"latitude":"1","longitude":"1"},
+              "default":false,
+              "active":true
+              }
+      ],
+        "rank":85,
+        "active":true
+      }
+      ,
+      {
+        "_id":"64870b416bee9047fe2bd18b",
+        "name": "user 6",
+        "slug": "user-6",
+        "email":"user-6@gmail.com",
+        "phone":"123456789",
+        "profileImg":"user.jpg",
+        "password":"123456789",
+        "language":"english",
+        "role":"user",
+        "addresses": [
+          {
+
+            "alias": "address 1",
+            "details": "details 1",
+            "phone": "123456789",
+            "city": "city 1",
+            "postalCode": "1234",
+            "default":true,
+            "active":true
+          },
+          {
+
+            "alias": "address 2",
+            "details": "details 2",
+            "phone": "123456789",
+            "city": "city 2",
+            "postalCode": "1234",
+            "default":false,
+            "active":true
+          },
+          {
+
+            "alias": "address 3",
+            "details": "details 3",
+            "phone": "123456789",
+            "city": "city 3",
+            "postalCode": "1234",
+            "default":false,
+            "active":true
+          }
+        ],
+        "locations":[
+          {
+          "location":{"latitude":"1","longitude":"1"},
+          "default":true,
+          "active":true
+          },
+          {
+              "location":{"latitude":"1","longitude":"1"},
+              "default":false,
+              "active":true
+              }
+      ],
+        "rank":85,
+        "active":true
+      }
+   
+]

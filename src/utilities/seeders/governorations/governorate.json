@@ -1,0 +1,64 @@
+[
+    {
+      "_id":"6408c102e545fdfe0146eeb0",
+      "name": "Istanbul",
+      "slug": "istanbul",
+      "code": "TR01",
+      "country": "",
+      "countryCode": "TR",
+      "rank":195,
+      "active":true
+    },
+    {
+      "_id":"6408c102e545fdfe0146eeb5",
+      "name": "Ankara",
+      "slug": "ankara",
+      "code": "TR02",
+      "country": "",
+      "countryCode": "TR",
+      "rank":90,
+      "active":true
+    },
+    {
+      "_id":"6408c102e545fdfe0146eeb6",
+      "name": "Kunia",
+
+      "slug": "kunia",
+      "code": "TR03",
+      "country": "",
+      "countryCode": "TR",
+      "rank":85,
+      "active":true
+    },
+    {
+      "_id":"6408c102e545fdfe0146eeb7",
+      "name": "Adana",
+      "slug": "adana",
+      "code": "TR04",
+      "country": "",
+      "countryCode": "TR",
+      "rank":80,
+      "active":true
+    },
+    {
+      "_id":"6408c102e545fdfe0146eeb8",
+      "name": "Bursa",
+      "slug": "bursa",
+      "code": "TR05",
+      "country": "",
+      "countryCode": "TR",
+      "rank":75,
+      "active":true
+    },
+    {
+      "_id":"6408c102e545fdfe0146eeb9",
+      "name": "Gazientap",
+      "slug": "Gazientap",
+      "code": "TR06",
+      "country": "",
+      "countryCode": "TR",
+      "rank":70,
+      "active":true
+    }
+  ]
+  

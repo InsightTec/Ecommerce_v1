@@ -1,0 +1,59 @@
+[
+    {
+      "_id":"64870b416bee9047fe2bd18b",
+      "name": "Clothing",
+      "slug": "Clothing",
+      "rank":90,
+      "active":true
+    },
+    {
+        "_id":"64870b416bee9047fe2bd18c",
+        "name": "Footwear & Shoes",
+        "slug": "footwear_shoes",
+        "rank":85,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd18d",
+        "name": "Electronics & Gadgets",
+        "slug": "electronics_gadgets",
+        "rank":80,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd18e",
+        "name": "Games & Toys",
+        "slug": "games_toys",
+        "rank":75,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd18f",
+        "name": "Stationery",
+        "slug": "stationery",
+        "rank":70,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd190",
+        "name": "Hand & Power Tools",
+        "slug": "hand_power_tools",
+        "rank":65,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd191",
+        "name": "Furniture",
+        "slug": "furniture",
+        "image":"7.jpg",
+        "rank":60,
+        "active":true
+      },
+      {
+        "_id":"64870b416bee9047fe2bd192",
+        "name": "Sports Products",
+        "slug": "sports_products",
+        "rank":55,
+        "active":true
+      }
+]

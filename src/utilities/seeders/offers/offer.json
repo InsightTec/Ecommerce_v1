@@ -1,0 +1,121 @@
+[
+    {
+      "name": "offer 1",
+      "slug": "offer-1",
+      "image": "1.jpg",
+      "products": [],
+      "totalPriceBefore": 25,
+      "totalPriceAfter": 20,
+      "start": "2023-06-02",
+      "end": "2024-06-12",
+      "active":true,
+      "rank":95
+      
+    },
+    {
+      "name": "offer 2",
+      "slug": "offer-2",
+      "image": "2.jpg",
+      "products": [],
+      "totalPriceBefore": 50,
+      "totalPriceAfter": 40,
+      "start": "2023-50-10",
+      "end": "2023-12-01",
+      "active":true,
+      "rank":93
+      
+    },
+    {
+      "name": "offer 3",
+      "slug": "offer-3",
+      "image": "3.jpg",
+      "products": [],
+      "totalPriceBefore": 100,
+      "totalPriceAfter": 85,
+      "start": "2023-06-02",
+      "end": "2023-08-12",
+      "active":true,
+      "rank":90
+      
+    },
+    {
+      "name": "offer 4",
+      "slug": "offer-4",
+      "image": "4.jpg",
+      "products": [],
+      "totalPriceBefore": 70,
+      "totalPriceAfter": 50,
+      "start":"2023-06-01",
+      "end": "2023-06-30",
+      "active":true,
+      "rank":88
+      
+    },
+    {
+      "name": "offer 5",
+      "slug": "offer-5",
+      "image": "5.jpg",
+      "products": [],
+      "totalPriceBefore": 10,
+      "totalPriceAfter": 5,
+      "start": "2023-08-10",
+      "end": "2023-08-12",
+      "active":true,
+      "rank":86
+      
+    },
+    {
+      "name": "offer 6",
+      "slug": "offer-6",
+      "image": "1.jpg",
+      "products": [],
+      "totalPriceBefore": 200,
+      "totalPriceAfter": 15,
+      "start": "2023-06-06",
+      "end": "2023-06-09",
+      "active":true,
+      "rank":85
+      
+    },
+    {
+      "name": "offer 7",
+      "slug": "offer-7",
+      "image": "7.jpg",
+      "products": [],
+      "totalPriceBefore": 8,
+      "totalPriceAfter": 5,
+      "start": "2023-06-01",
+      "end": "2023-06-12",
+      "active":true,
+      "rank":84
+      
+    },
+    {
+      "name": "offer 8",
+      "slug": "offer-8",
+      "image": "8.jpg",
+      "products": [],
+      "totalPriceBefore": 110,
+      "totalPriceAfter": 90,
+      "start": "2023-01-12",
+      "end": "2023-09-12",
+      "active":true,
+      "rank":80
+      
+    },
+    {
+      "name": "offer 9",
+      "slug": "offer-9",
+      "image": "9.jpg",
+      "products": [],
+      "totalPriceBefore": 80,
+      "totalPriceAfter": 65,
+      "start": "2023-06-12",
+      "end": "2023-06-26",
+      "active":true,
+      "rank":77
+      
+    }
+   
+  ]
+  

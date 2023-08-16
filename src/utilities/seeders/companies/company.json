@@ -1,0 +1,54 @@
+[
+    {
+      "_id":"6486ff361d7682014ca1655a",
+      "name": "Company-1",
+      "slug": "Company-1",
+      "description":"Company-1 description",
+      "email":"company-1@gmail.com",
+      "location":{
+        "latitude":"",
+        "longitude":""
+      },
+      "rank":100,
+      "active":true
+    },
+    {
+      "_id":"6486ff361d7682014ca1655c",
+      "name": "Company-2",
+      "slug": "Company-2",
+      "description":"Company-2 description",
+      "email":"company-1@gmail.com",
+      "location":{
+        "latitude":"",
+        "longitude":""
+      },
+      "rank":90,
+      "active":true
+    },
+    {
+      "_id":"6486ff371d7682014ca1655e",
+      "name": "Company-3",
+      "slug": "Company-3",
+      "description":"Company-3 description",
+      "email":"company-3@gmail.com",
+      "location":{
+        "latitude":"",
+        "longitude":""
+      },
+      "rank":85,
+      "active":true
+    },
+    {
+      "_id":"6486ff371d7682014ca16560",
+      "name": "Company-4",
+      "slug": "Company-4",
+      "description":"Company-4 description",
+      "email":"company-4@gmail.com",
+      "location":{
+        "latitude":"",
+        "longitude":""
+      },
+      "rank":83,
+      "active":true
+    }
+]

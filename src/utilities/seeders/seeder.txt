@@ -1,0 +1,26 @@
+## Seder
+cd src/utilities/seeders/tags
+node .
+cd ..
+//==================================
+cd src/utilities/seeders/categories
+//========================================
+cd src/utilities/seeders/countries
+cd src/utilities/seeders/governorations
+cd src/utilities/seeders/regions
+cd src/utilities/seeders/hands
+//========================================
+//========================================
+//========================================
+
+cd src/utilities/seeders/companies
+node .
+cd ..
+
+cd src/utilities/seeders/brands
+cd src/utilities/seeders/subCategories
+
+cd src/utilities/seeders/products
+cd src/utilities/seeders/offers
+cd src/utilities/seeders/users
+
