@@ -20,8 +20,8 @@ router
   .route("/")
   .get(getMainCarousels)
   .post(
-    authService.protect,
-    authService.allowedTo("admin", "manager","user"),
+    // authService.protect,
+    // authService.allowedTo("admin", "company","user"),
     uploadMainCarouselImage,
     resizeImage,
   createMainCarousel
@@ -33,14 +33,14 @@ router
   .get( getMainCarousel)
   .put(
     authService.protect,
-    authService.allowedTo("admin", "manager","user"),
+    authService.allowedTo("admin", "company","user"),
     uploadMainCarouselImage,
     resizeImage,
     updateMainCarousel
   )
   .delete(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     deleteMainCarousel
   );
 

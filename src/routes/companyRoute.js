@@ -39,7 +39,7 @@ router
  getCompanies)
   .post(
     authService.protect,
-    authService.allowedTo("admin", "manager","user"),
+    authService.allowedTo("admin", "company","user"),
    
     createCompanyValidator,
     uploadCompanyImage,
@@ -52,8 +52,8 @@ router
   .route("/:id")
   // param 1 rule, param 2 middleware ,param 3 service
   .get(
-    authService.protect,
-    authService.allowedTo("company","admin","user"),
+    // authService.protect,
+    // authService.allowedTo("company","admin","user"),
     getCompanyValidator,
      getCompany)
   .put(
@@ -78,8 +78,8 @@ router
   .route("/:qr/qr")
   // param 1 rule, param 2 middleware ,param 3 service
   .get(
-    authService.protect,
-    authService.allowedTo("company","admin","user"),
+    // authService.protect,
+    // authService.allowedTo("company","admin","user"),
     getCompanyByQR)
 
     router

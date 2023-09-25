@@ -7,12 +7,13 @@ const {
   clearCart,
   updateCartItemQuantity,
   applyCoupon,
+  removeSpecificCartProduct,
 } = require('../services/cartService');
 const authService = require('../services/authService');
 
 const router = express.Router();
 
-router.use(authService.protect, authService.allowedTo('user','admin'));
+router.use(authService.protect, authService.allowedTo('user','admin','company'));
 router
   .route('/')
   .post(addProductToCart)
@@ -25,5 +26,9 @@ router
   .route('/:itemId')
   .put(updateCartItemQuantity)
   .delete(removeSpecificCartItem);
+
+  router
+  .route('/product/:productId')
+  .delete(removeSpecificCartProduct);
 
 module.exports = router;

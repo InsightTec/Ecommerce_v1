@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
   {
+    orderNumber:Number,
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
@@ -40,6 +41,7 @@ const orderSchema = new mongoose.Schema(
     totalOrderPrice: {
       type: Number,
     },
+    currency:String,
     paymentMethodType: {
       type: String,
       enum: ["card", "cash"],
@@ -71,7 +73,7 @@ orderSchema.pre(/^find/, function (next) {
   });
   this.populate({
     path: "company",
-    select: "name image ",
+    //select: "name image ",
   });
 
   next();

@@ -27,11 +27,25 @@ exports.addProductToCart = asyncHandler(async (req, res, next) => {
 
   if (!cart) {
     // create cart fot logged user with product
+    console.log('no cart')
+    console.log('product?.company?._id',product?.company?._id)
     cart = await Cart.create({
       user: req.user._id,
-      cartItems: [{ product: productId, color,quantity, price: product.price }],
+      company:product?.company?._id,
+      currency:product?.currency,
+      cartItems: [{ product: productId, color,quantity, price: product.price,currency:product.currency }],
     });
-  } else {
+  } 
+  else {
+
+    if(cart.cartItems.length === 0){
+      cart.company=product?.company?._id;
+      cart.currency=product?.currency;
+    }
+    // console.log('cart.cartItems.length ',cart.cartItems.length )
+    // console.log('cart')
+    // console.log('product?.company?._id',product?.company?._id)
+
     // product exist in cart, update product quantity
     const productIndex = cart.cartItems.findIndex(
       (item) => item.product.toString() === productId && item.color === color
@@ -44,7 +58,7 @@ exports.addProductToCart = asyncHandler(async (req, res, next) => {
       cart.cartItems[productIndex] = cartItem;
     } else {
       // product not exist in cart,  push product to cartItems array
-      cart.cartItems.push({ product: productId, color, price: product.price });
+      cart.cartItems.push({ product: productId, color, price: product.price ,currency:product.currency});
     }
   }
 
@@ -97,6 +111,8 @@ exports.getLoggedUserCart = asyncHandler(async (req, res, next) => {
   });
 });
 
+
+// here to remove by item id for cart screen
 // @desc    Remove specific cart item
 // @route   DELETE /api/v1/cart/:itemId
 // @access  Private/User
@@ -104,13 +120,58 @@ exports.removeSpecificCartItem = asyncHandler(async (req, res, next) => {
   const cart = await Cart.findOneAndUpdate(
     { user: req.user._id },
     {
-      $pull: { cartItems: { product: req.params.itemId } },
+      $pull: { cartItems: { _id: req.params.itemId } },
     },
     { new: true }
   );
 
-  calcTotalCartPrice(cart);
+ const r= calcTotalCartPrice(cart);
+
+ if(cart.cartItems.length === 0){
+  cart.company=null
+  cart.currency=null
+ }
+ 
+
   cart.save();
+
+  console.log('cart',cart)
+  console.log('cart r',r)
+
+  res.status(200).json({
+    status: 'success',
+    numOfCartItems: cart.cartItems.length,
+    data: cart,
+  });
+});
+
+// here to remove by product id for product screen
+// @desc    Remove specific cart product
+// @route   DELETE /api/v1/cart/product/:productId
+// @access  Private/User
+exports.removeSpecificCartProduct = asyncHandler(async (req, res, next) => {
+  console.log('req.params.productId',req.params.productId)
+  const cart = await Cart.findOneAndUpdate(
+    { user: req.user._id },
+    {
+      $pull: { cartItems: { product: req.params.productId } },
+    },
+    { new: true }
+  );
+
+ const r= calcTotalCartPrice(cart);
+
+ if(cart.cartItems.length === 0){
+  cart.company=null
+    cart.currency=null
+ }
+    
+
+
+  cart.save();
+
+  console.log('cart',cart)
+  console.log('cart r',r)
 
   res.status(200).json({
     status: 'success',

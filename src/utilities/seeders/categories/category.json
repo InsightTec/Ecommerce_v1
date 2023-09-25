@@ -1,59 +1,94 @@
 [
     {
-      "_id":"64870b416bee9047fe2bd18b",
-      "name": "Clothing",
-      "slug": "Clothing",
+      "_id":"64f2ebeaf32a6bf994a0b43d",
+      "name": "foodstuffs",
+      "nameTr": "Gıda Maddeleri",
+      "nameAr": "مواد غذائية",
+      "slug": "foodstuffs",
       "rank":90,
       "active":true
     },
     {
-        "_id":"64870b416bee9047fe2bd18c",
-        "name": "Footwear & Shoes",
-        "slug": "footwear_shoes",
-        "rank":85,
-        "active":true
-      },
-      {
-        "_id":"64870b416bee9047fe2bd18d",
-        "name": "Electronics & Gadgets",
-        "slug": "electronics_gadgets",
-        "rank":80,
-        "active":true
-      },
-      {
-        "_id":"64870b416bee9047fe2bd18e",
-        "name": "Games & Toys",
-        "slug": "games_toys",
-        "rank":75,
-        "active":true
-      },
-      {
-        "_id":"64870b416bee9047fe2bd18f",
-        "name": "Stationery",
-        "slug": "stationery",
-        "rank":70,
-        "active":true
-      },
-      {
-        "_id":"64870b416bee9047fe2bd190",
-        "name": "Hand & Power Tools",
-        "slug": "hand_power_tools",
-        "rank":65,
-        "active":true
-      },
-      {
-        "_id":"64870b416bee9047fe2bd191",
-        "name": "Furniture",
-        "slug": "furniture",
-        "image":"7.jpg",
-        "rank":60,
-        "active":true
-      },
-      {
-        "_id":"64870b416bee9047fe2bd192",
-        "name": "Sports Products",
-        "slug": "sports_products",
-        "rank":55,
-        "active":true
-      }
+      "_id":"64f2ee22f32a6bf994a0b4c8",
+      "name": "Drinks",
+      "nameTr": "içecekler",
+      "nameAr": " مشروبات",
+      "slug": "drinks",
+      "rank":85,
+      "active":true
+    }
+    ,
+    {
+      "_id":"64f2f3d5f32a6bf994a0b4d7",
+      "name": "Detergent",
+      "nameTr": "Deterjan",
+      "nameAr": " منظفات",
+      "slug": "Detergent",
+      "rank":80,
+      "active":true
+    } ,
+    {
+      "_id":"64f2f7d5f32a6bf994a0b4e6",
+      "name": "accessories",
+      "nameTr": "Aksesuarlar",
+      "nameAr": " كماليات",
+      "slug": "accessories",
+      "rank":75,
+      "active":true
+    },
+    {
+      "_id":"64f2f809f32a6bf994a0b4f5",
+      "name": "fruits",
+      "nameTr": "meyveler",
+      "nameAr": " فواكه",
+      "slug": "fruits",
+      "rank":70,
+      "active":true
+    },
+    {
+      "_id":"64f2f836f32a6bf994a0b4fc",
+      "name": "Vegetable",
+      "nameTr": "sebze",
+      "nameAr": " خضار",
+      "slug": "Vegetable",
+      "rank":65,
+      "active":true
+    },
+    {
+      "_id":"64f2f86ff32a6bf994a0b503",
+      "name": "Spices",
+      "nameTr": "baharat",
+      "nameAr": " بهارات",
+      "slug": "Spices",
+      "rank":60,
+      "active":true
+    },
+    {
+      "_id":"64f2f8aef32a6bf994a0b50a",
+      "name": "Summit Market",
+      "nameTr": "Zirve Pazarı",
+      "nameAr": " سمت ماركت",
+      "slug": "Summit_Market",
+      "rank":55,
+      "active":true
+    },
+    {
+      "_id":"64f2f8eff32a6bf994a0b511",
+      "name": "Ice cream",
+      "nameTr": "Dondurma",
+      "nameAr": " بوظة",
+      "slug": "ice_cream",
+      "rank":50,
+      "active":true
+    },
+    {
+      "_id":"64f2f91df32a6bf994a0b518",
+      "name": "Eating",
+      "nameTr": "Yiyecek",
+      "nameAr": " اكلات",
+      "slug": "Eating",
+      "rank":45,
+      "active":true
+    }
+    
 ]

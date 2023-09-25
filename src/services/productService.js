@@ -10,6 +10,7 @@ const ApiError = require("../utilities/apiError");
 const factory = require("./handlersFactory");
 const { deleteSingleImage } = require("../middlewares/deleteImageMiddleware");
 const { isTimeDifferenceGreaterThanOneHour } = require("../utilities/visits/recordVisits");
+const ApiFeatures = require("../utilities/apiFeatures");
 
 exports.uploadProductImages = uploadMixOfImages([
   {
@@ -23,7 +24,7 @@ exports.uploadProductImages = uploadMixOfImages([
 ]);
 
 exports.resizeProductImages = asyncHandler(async (req, res, next) => {
-  console.log('req.body',JSON.stringify(req.body));
+//  console.log('req.body',JSON.stringify(req.body));
   // console.log(req.files);
   //1- Image processing for imageCover
   if (req.files)
@@ -223,45 +224,46 @@ if(document?.images){
 // @des get  top Product from companies
 // @route  GET api/v1/products/top/:count
 // @access private
-exports.getProductsTopFromEachCompany =  asyncHandler(async (req, res, next) => {
-  const { count } = req.params;
-  try {
+exports.getProductsTopFromEachCompany =factory.getAll(productModel)
+// exports.getProductsTopFromEachCompany =  asyncHandler(async (req, res, next) => {
+//   const { count } = req.params;
+//   try {
 
-    const pipeline = [
-      {
-        $match: {
-          company: { $ne: null },
-        },
-      },
-      // {
-      //   $group: {
-      //     _id: '$company',
-      //     products: { $push: '$_id' },
-      //   },
-      // },
-      // {
-      //   $sort: {
-      //     products: { $meta: 'rank', $desc: true },
-      //   },
-      // },
-      // {
-      //   $limit: 2,
-      // },
-    ];
+//     const pipeline = [
+//       {
+//         $match: {
+//           company: { $ne: null },
+//         },
+//       },
+//       // {
+//       //   $group: {
+//       //     _id: '$company',
+//       //     products: { $push: '$_id' },
+//       //   },
+//       // },
+//       // {
+//       //   $sort: {
+//       //     products: { $meta: 'rank', $desc: true },
+//       //   },
+//       // },
+//       // {
+//       //   $limit: 2,
+//       // },
+//     ];
 
-    const documents = await productModel.aggregate(pipeline);
-    res.status(200).json({ results: documents.length, paginationResult:{}, data: documents });
+//     const documents = await productModel.aggregate(pipeline);
+//     res.status(200).json({ results: documents.length, paginationResult:{}, data: documents });
     
-  } catch (error) {
-    console.error('Error retrieving top 2 products per company:', error);
-    return next(new ApiError(`Error retrieving top 2 products per company`, 404));
-  }
+//   } catch (error) {
+//     console.error('Error retrieving top 2 products per company:', error);
+//     return next(new ApiError(`Error retrieving top 2 products per company`, 404));
+//   }
 
   
 
 
 
-});
+// });
 
 exports.recordProductVistit =  async( productId, userId)=> {
 
@@ -295,3 +297,35 @@ return false
   }
 
 }
+
+exports.getProductsByCompanyAndCategory= asyncHandler(async (req, res, next) => {
+ 
+  const {companyId,categoryId}=req.params
+
+   let filter = {};
+   filter.company=companyId
+   filter.category=categoryId
+ 
+
+
+   // get total number of brands
+   const documentsCounts = await productModel.countDocuments(filter);
+
+   //Build query
+   const apiFeatures = new ApiFeatures(productModel.find(filter), req.query)
+     .paginate(documentsCounts)
+     .filter()
+     .search(productModel)
+     .limitFields()
+     .sort();
+
+   //execute query
+   const { mongooseQuery, paginationResult } = apiFeatures;
+   // const products = await apiFeatures.mongooseQuery;
+
+   const documents = await mongooseQuery;
+
+   res
+     .status(200)
+     .json({ total:documentsCounts,results: documents.length, paginationResult, data: documents });
+})

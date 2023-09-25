@@ -12,6 +12,8 @@ const subCategorySchema = new mongoose.Schema({
 
 
   },
+  nameTr: { type: String},
+  nameAr: { type: String},
   slug:{
     type:String,
     lowercase:true

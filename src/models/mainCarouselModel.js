@@ -4,7 +4,11 @@ const mongoose = require("mongoose");
 const mainCarouselSchema = new mongoose.Schema(
   {
     captionLarge: String,
+    captionLargeTr: { type: String},
+    captionLargeAr: { type: String},
     captionSmall: String,
+    captionSmallTr: { type: String},
+    captionSmallAr: { type: String},
     image: String,
     // as example : if urlType is company here provide _id of company or slug
     url:String,
@@ -20,23 +24,23 @@ const mainCarouselSchema = new mongoose.Schema(
   { timestamps: true }
   
 );
-const setImageURL = (doc) => {
-  if (doc.image) {
-   // const imageUrl = `${process.env.BASE_URL}/brands/${doc.image}`;
-    const imageUrl = `${process.env.BASE_URL_LOCAL_REACT_NATIVE}/mainCarousel/${doc.image}`;
-    doc.image = imageUrl;
-  }
-};
+// const setImageURL = (doc) => {
+//   if (doc.image) {
+//    // const imageUrl = `${process.env.BASE_URL}/brands/${doc.image}`;
+//     const imageUrl = `${process.env.BASE_URL_LOCAL_REACT_NATIVE}/mainCarousel/${doc.image}`;
+//     doc.image = imageUrl;
+//   }
+// };
 
 // findOne, findAll and update
-mainCarouselSchema.post("init", (doc) => {
-  setImageURL(doc);
-});
+// mainCarouselSchema.post("init", (doc) => {
+//   setImageURL(doc);
+// });
 
 // create
-mainCarouselSchema.post("save", (doc) => {
-  setImageURL(doc);
-});
+// mainCarouselSchema.post("save", (doc) => {
+//   setImageURL(doc);
+// });
 
 // 2- Create model
 const mainCarouselModel = mongoose.model("MainCarousel", mainCarouselSchema);

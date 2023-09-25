@@ -149,6 +149,7 @@ class ApiFeatures {
       // pagination result;
       let pagination = {};
   
+      pagination.totalResults = countDocuments;
       pagination.currentPage = page;
       pagination.limit = limit;
       pagination.numberOfPages = Math.ceil(countDocuments / limit);

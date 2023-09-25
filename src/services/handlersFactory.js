@@ -9,7 +9,7 @@ exports.deleteOne = (Model) =>
     const document = await Model.findByIdAndDelete(id);
     if (!document) {
       // res.status(404).json({message:`No brand for this id :${id}`});
-      return next(new ApiError(`No brand for this id :${id}`, 404));
+      return next(new ApiError(`No document for this id :${id}`, 404));
     }
     // Trigger "remove" event when update document
     document.remove();
@@ -20,7 +20,7 @@ exports.deleteOne = (Model) =>
 exports.updateOne = (Model) =>
   asyncHandler(async (req, res, next) => {
     const { name } = req.body;
-//console.log('jjjj',JSON.stringify(req.body))
+console.log('jjjj',JSON.stringify(req.body))
     const document = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     }); // new to return brand after update);
@@ -35,12 +35,14 @@ exports.updateOne = (Model) =>
 
 exports.createOne = (Model) =>
   asyncHandler(async (req, res) => {
+    console.log('here',req.body)
     const document = await Model.create(req.body);
     res.status(201).send(document);
   });
 
 exports.getOne = (Model, populationOpt) =>
   asyncHandler(async (req, res, next) => {
+   console.log('hereeeeeeeeee')
     const { id } = req.params;
     // 1) Build query here not use await to build
     let query = Model.findById(id);
@@ -65,9 +67,9 @@ exports.getAll = (Model, modeName = "") =>
       filter = req.filterObj;
     }
 
- console.log('offer filter='+JSON.stringify(filter))
+ console.log('filterObj='+JSON.stringify(req.filterObj))
     // get total number of brands
-    const documentsCounts = await Model.countDocuments();
+    const documentsCounts = await Model.countDocuments(filter);
 
     //Build query
     const apiFeatures = new ApiFeatures(Model.find(filter), req.query)

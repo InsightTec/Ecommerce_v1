@@ -20,7 +20,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-    role:req.body.roles
+    role:req.body.role
    // roles:req.body.roles
   });
 
@@ -28,7 +28,7 @@ exports.signup = asyncHandler(async (req, res, next) => {
   const token = createToken(user._id);
 
   // add authentication  to winston logger
-   addAuthLogData(`Sign up a new user`,user,req);
+  // addAuthLogData(`Sign up a new user`,user,req);
 
   res.status(201).json({ data: user, token });
 });
@@ -88,10 +88,10 @@ exports.protect = asyncHandler(async (req, res, next) => {
 
   // 2) Verify token (no change happens, expired token)
   const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-  //console.log('3')
+  
   // 3) Check if user exists
   const currentUser = await User.findById(decoded.userId);
-
+ //console.log('currentUser',currentUser)
 
   if (!currentUser) {
     return next(

@@ -32,6 +32,8 @@ exports.insertCategorySeeder =  asyncHandler(async () => {
         
       _id:new ObjectId(item._id),
           name: item.name,
+          nameTr: item.nameTr,
+          nameAr: item.nameAr,
          
           slug: item.slug,
         

@@ -3,19 +3,15 @@ const mongoose = require("mongoose");
 // 1- Create Schema
 const categorySchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: [true, "category is required"],
-      unique: [true, "category must be unique"],
-      minlength: [3, "minimun characters must be"],
-      maxlength: [32, "maximun characters must be 32"],
-    },
-    slug: {
-      type: String,
-      lowercase: true,
-    },
+    name: { type: String,required: [true, "category is required"],unique: [true, "category must be unique"], minlength: [3, "minimun characters must be"],maxlength: [32, "maximun characters must be 32"],},
+    nameTr: { type: String},
+    nameAr: { type: String},
+    slug: {type: String, lowercase: true, },
     image: String,
     tags: [{type: mongoose.Schema.ObjectId,ref: "Tag",}],
+    rank: { type: Number,default: 1,},
+    active: {type: Boolean,default: true,},
+    deletedAt: Date,
   },
   { timestamps: true }
 );

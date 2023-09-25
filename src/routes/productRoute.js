@@ -12,6 +12,7 @@ const {
   deleteProductCoverImage,
   deleteProductGalleryImages,
   getProductsTopFromEachCompany,
+  getProductsByCompanyAndCategory
 } = require("../services/productService");
 const {
   getProductValidator,
@@ -42,7 +43,7 @@ router
   .get(createFilterObj, getProducts)
   .post(
     authService.protect,
-    authService.allowedTo("admin", "manager","user"),
+    authService.allowedTo("admin", "company"),
     uploadProductImages,
     resizeProductImages,
     createProductValidator,
@@ -54,13 +55,14 @@ router
   .route("/:id")
   // param 1 rule, param 2 middleware ,param 3 service
   .get(
-    authService.protect,
-    authService.allowedTo("admin", "manager","user"),
+    // authService.protect,
+    // authService.allowedTo("admin", "company","user"),
     getProductValidator,
      getProduct)
+
   .put(
     authService.protect,
-    authService.allowedTo("admin", "manager","user"),
+    authService.allowedTo("admin", "company"),
      uploadProductImages,
     resizeProductImages,
     updateProductValidator,
@@ -68,7 +70,7 @@ router
   )
   .delete(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company"),
     deleteProductValidator,
     deleteProduct
   );
@@ -77,23 +79,30 @@ router
   .route("/:id/removeimage")
   .delete(
     authService.protect,
-    authService.allowedTo("company","admin","user"),
+    authService.allowedTo("company","admin"),
     deleteProductCoverImage)
 
     router
     .route("/:id/removegalleryimages")
     .delete(
       authService.protect,
-      authService.allowedTo("company","admin","user"),
+      authService.allowedTo("company","admin"),
       deleteProductGalleryImages)
 
       
     router
     .route("/top/:count")
     .get(
-      authService.protect,
-      authService.allowedTo("company","admin","user"),
+      // authService.protect,
+      // authService.allowedTo("company","admin","user"),
       getProductsTopFromEachCompany)
+
+      router.route("/company/:companyId/category/:categoryId")
+  .get(
+    // authService.protect,
+    // authService.allowedTo("admin", "company","user"),
+   // getProductValidator,
+     getProductsByCompanyAndCategory)
 
       
 module.exports = router;

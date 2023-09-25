@@ -18,7 +18,7 @@ exports.createCashOrder = asyncHandler(async (req, res, next) => {
  
   const cart = await Cart.findOne({ user: req.user.id })
 
-  console.log('cart??????????',cart)
+ // console.log('cart??????????',cart)
   if(! cart) {
     return next(
       new ApiError(`There is no such cart with id ${req.params.cartId}`, 404)
@@ -37,12 +37,14 @@ exports.createCashOrder = asyncHandler(async (req, res, next) => {
   const cartPrice = cart.totalPriceAfterDiscount
     ? cart.totalPriceAfterDiscount
     : cart.totalCartPrice;
-console.log('cartPrice',cartPrice)
+//console.log('cartPrice',cartPrice)
   const totalOrderPrice = cartPrice + taxPrice + shippingPrice;
 
   // 3) Create order with default paymentMethodType cash
   const order = await Order.create({
     user: req.user._id,
+    company:cart.company,
+    currency:cart.currency,
     cartItems: cart.cartItems,
     shippingAddress: req.body.shippingAddress,
     totalOrderPrice,
@@ -67,9 +69,26 @@ console.log('cartPrice',cartPrice)
 });
 
 exports.filterOrderForLoggedUser = asyncHandler(async (req, res, next) => {
-  if (req.user.role === "user") req.filterObj = { user: req.user._id };
+  if (!req.filterObj) {
+    req.filterObj = {}; // Define req.filterObj if it doesn't exist
+  }
+
+  if (req.user.role === "user" )
+    req.filterObj = { user: req.user._id };
+  else{
+    if (req.user.role === "company" )
+       req.filterObj = { company: req.user.company._id };
+  }
   next();
 });
+
+exports.filterOrderForStatus = asyncHandler(async (req, res, next) => {
+ 
+
+  if (req.params.orderStatus ) req.filterObj.orderStatus = req.params.orderStatus ;
+  next();
+});
+
 // @desc    Get all orders
 // @route   POST /api/v1/orders
 // @access  Protected/User-Admin-Manager
@@ -225,6 +244,7 @@ const createCardOrder = async (session) => {
   const order = await Order.create({
     user: user._id,
     cartItems: cart.cartItems,
+    currency:cart.currency,
     shippingAddress,
     totalOrderPrice: oderPrice,
     isPaid: true,

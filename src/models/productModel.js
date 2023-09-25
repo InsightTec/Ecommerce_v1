@@ -8,6 +8,8 @@ const productSchema = new mongoose.Schema(
       minlength: [3, "minimun characters must be"],
       maxlength: [100, "maximun characters must be 100"],
     },
+    titleTr: { type: String},
+    titleAr: { type: String},
     slug: {
       type: String,
       lowercase: true,
@@ -60,8 +62,12 @@ const productSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "Brand",
     },
+    unit: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Unit",
+    },
     tags: [{type: mongoose.Schema.ObjectId,ref: "Tag",}],
-    currency:{type: String,enum: ["$","€","LT","TRY", "SYP"],default: "$",},
+    currency:{type: String,enum: ["$","€","TRY",'₺', "SYP"],default: "$",},
     totalViews:{type: Number,default:0},
     ratingsAverage: {
       type: Number,
@@ -95,11 +101,15 @@ productSchema.pre(/^find/, function (next) {
 
   this.populate({
     path: "category",
-    select: "name ",
+    select: "name nameTr nameAr",
   });
   this.populate({
     path: "company",
-    select: "name ",
+  //  select: "name phone locations",
+  });
+  this.populate({
+    path: "unit",
+    //select: "name ",
   });
   this.populate({
     path: "brand",
@@ -107,7 +117,7 @@ productSchema.pre(/^find/, function (next) {
   });
   this.populate({
     path: "tags",
-    select: "name ",
+    select: "name nameTr nameAr",
   });
   next();
 });

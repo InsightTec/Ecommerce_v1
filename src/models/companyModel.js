@@ -10,6 +10,8 @@ const companySchema = new mongoose.Schema(
         minlength: [3, "minimun characters must be"],
         maxlength: [32, "maximun characters must be 32"],
       },
+      nameTr: { type: String},
+      nameAr: { type: String},
     description:String,
       slug: {
         type: String,

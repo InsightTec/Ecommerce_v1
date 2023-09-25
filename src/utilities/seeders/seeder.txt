@@ -1,5 +1,6 @@
 ## Seder
 cd src/utilities/seeders/tags
+cd src/utilities/seeders/units
 node .
 cd ..
 //==================================

@@ -215,7 +215,7 @@ exports.deleteCompany = asyncHandler(async (req, res, next) => {
 
    // 2. check if has old image to delete it
   if(result?.image){
-    const result=deleteSingleImage(result?.image,'companies')
+    const res=deleteSingleImage(result?.image,'companies')
   
   }
 

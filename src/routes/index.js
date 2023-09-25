@@ -12,6 +12,7 @@ const subCategoryRoute = require("./subCategoryRoute");
 const brandRoute = require("./brandRoute");
 const companyRoute = require("./companyRoute");
 const productRoute = require("./productRoute");
+const unitRoute = require("./unitRoute");
 const offerRoute = require("./offerRoute");
 const tagRoute = require("./tagRoute");
 const userRoute = require("./userRoute");
@@ -38,6 +39,7 @@ const mountRoutes = (app) => {
   app.use("/api/v1/brands", brandRoute);
   app.use("/api/v1/companies", companyRoute);
   app.use("/api/v1/products", productRoute);
+  app.use("/api/v1/units", unitRoute);
   app.use("/api/v1/offers", offerRoute);
   app.use("/api/v1/tags", tagRoute);
   app.use("/api/v1/users", userRoute);

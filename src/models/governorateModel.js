@@ -7,6 +7,8 @@ const governorateSchema = new mongoose.Schema(
       trim: true,
       required: [true, "name required"],
     },
+    nameTr: { type: String},
+    nameAr: { type: String},
     slug: {
       type: String,
       lowercase: true,

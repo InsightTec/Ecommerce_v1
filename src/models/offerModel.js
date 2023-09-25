@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const offerSchema = new mongoose.Schema(
   {
     name: {type: String,required: [true, "Offer is required"],},
+    nameTr: { type: String},
+    nameAr: { type: String},
     offer: {type: String}, //example 10-12 % off
     slug:String,
     imageCover:String,
