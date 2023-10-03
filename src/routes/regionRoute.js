@@ -31,11 +31,11 @@ router
   .route("/")
   .get(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     createFilterObj,getRegions)
   .post(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
    createRegionValidator,
    createRegion
   );
@@ -46,18 +46,18 @@ router
   // param 1 rule, param 2 middleware ,param 3 service
   .get(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     getRegionValidator, 
     getRegion)
   .put(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     updateRegionValidator,
     updateRegion
   )
   .delete(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     deleteRegionValidator,
     deleteRegion
   );

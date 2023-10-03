@@ -32,11 +32,11 @@ router
   .route("/")
   .get(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     createFilterObj,getGovernorations)
   .post(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
    createGovernorateValidator,
    createGovernorate
   );
@@ -47,18 +47,18 @@ router
   // param 1 rule, param 2 middleware ,param 3 service
   .get(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     getGovernorateValidator,
      getGovernorate)
   .put(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     updateGovernorateValidator,
     updateGovernorate
   )
   .delete(
     authService.protect,
-    authService.allowedTo("admin","user"),
+    authService.allowedTo("admin","company","user"),
     deleteGovernorateValidator,
     deleteGovernorate
   );
