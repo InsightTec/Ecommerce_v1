@@ -8,18 +8,50 @@ const {
   updateCartItemQuantity,
   applyCoupon,
   removeSpecificCartProduct,
+  addProductToCartWithoutLogin,
+  getCartById,
+  updateCartItemQuantityById,
+  removeSpecificCartItemByCartId,
+  getCartByGuestId,
+  addProductToCartByQuestId
 } = require('../services/cartService');
 const authService = require('../services/authService');
 
 const router = express.Router();
 
-router.use(authService.protect, authService.allowedTo('user','admin','company'));
+//router.use(authService.protect, authService.allowedTo('user','admin','company'));
 router
   .route('/')
-  .post(addProductToCart)
-  .get(getLoggedUserCart)
-  .delete(clearCart);
+  .post(
+    authService.protect,
+    authService.allowedTo('user','admin','company'),
+    addProductToCart)
+  .get(
+    authService.protect,
+    authService.allowedTo('user','admin','company'),
+    getLoggedUserCart)
+  .delete(
+    authService.protect,
+    authService.allowedTo('user','admin','company'),
+    clearCart
+    );
 
+    // start operations without login
+    router
+    .route('/:id')
+    .post(
+      addProductToCartWithoutLogin)
+      .get(
+        getCartById)
+
+router.get('/guest/:id', getCartByGuestId);
+router.post('/guest/:id', addProductToCartByQuestId);
+router.put('/guest/:id', addProductToCartWithoutLogin);
+
+router.put('/:id/byCart', updateCartItemQuantityById);
+router.delete('/:id/byCart/:itemId', removeSpecificCartItemByCartId);
+
+// end  operations without login
 router.put('/applyCoupon', applyCoupon);
 
 router

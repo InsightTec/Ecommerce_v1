@@ -68,6 +68,70 @@ exports.createCashOrder = asyncHandler(async (req, res, next) => {
   res.status(201).json({ status: "success", data: order });
 });
 
+// @desc    create cash order by cart id
+// @route   POST /api/v1/orders/:cartId/
+// @access  Public
+exports.createCashOrderBCartId = asyncHandler(async (req, res, next) => {
+  // app settings
+  const taxPrice = 0;
+  const shippingPrice = 0;
+
+  const {guestId,cartId}=req.params;
+ 
+  const cart = await Cart.findOne( {guest:guestId} )
+
+ //console.log('cart??????????',cart)
+  if(! cart ) {
+    return next(
+      new ApiError(`There is no such cart with id ${cartId}`, 404)
+    );
+  }
+
+  // 1) Get cart depend on cartId
+  // const cart = await Cart.findById(req.params.cartId);
+  // if (!cart) {
+  //   return next(
+  //     new ApiError(`There is no such cart with id ${req.params.cartId}`, 404)
+  //   );
+  // }
+
+  // 2) Get order price depend on cart price "Check if coupon apply"
+  const cartPrice = cart.totalPriceAfterDiscount
+    ? cart.totalPriceAfterDiscount
+    : cart.totalCartPrice;
+//console.log('cartPrice',cartPrice)
+  const totalOrderPrice = cartPrice + taxPrice + shippingPrice;
+
+  // 3) Create order with default paymentMethodType cash
+  const order = await Order.create({
+    // user: req.user._id,
+    guest:guestId,
+    company:cart?.company,
+    currency:cart?.currency,
+    cartItems: cart?.cartItems,
+    shippingAddress: req.body.shippingAddress,
+    totalOrderPrice,
+  });
+
+  // 4) After creating order, decrement product quantity, increment product sold
+  if (order) {
+    const bulkOption = cart.cartItems.map((item) => ({
+      updateOne: {
+        filter: { _id: item.product },
+        update: { $inc: { quantity: -item.quantity, sold: +item.quantity } },
+      },
+    }));
+    await Product.bulkWrite(bulkOption, {});
+
+    // 5) Clear cart depend on cartId
+   // await Cart.findByIdAndDelete(req.params.cartId);
+    await Cart.findByIdAndDelete(cart._id);
+  }
+
+  res.status(201).json({ status: "success", data: order });
+});
+
+
 exports.filterOrderForLoggedUser = asyncHandler(async (req, res, next) => {
   if (!req.filterObj) {
     req.filterObj = {}; // Define req.filterObj if it doesn't exist
@@ -127,7 +191,7 @@ exports.updateOrderToPaid = asyncHandler(async (req, res, next) => {
 // @access  Protected/Admin-Manager
 exports.updateOrderToDelivered = asyncHandler(async (req, res, next) => {
 
-  console.log('req.params.id',req.params.id)
+  // console.log('req.params.id',req.params.id)
   const order = await Order.findById(req.params.id);
   if (!order) {
     return next(

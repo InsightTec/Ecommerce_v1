@@ -9,17 +9,19 @@ const {
   updateOrderToDelivered,
   updateOrderToCancel,
   checkoutSession,
+  createCashOrderBCartId,
 } = require("../services/orderService");
 
 const authService = require("../services/authService");
 
 const router = express.Router();
 
-router.use(authService.protect);
+//router.use(authService.protect);
 
 router.get(
   "/status/:orderStatus",
-  authService.allowedTo("admin","company","user"),
+  //authService.protect,
+  //authService.allowedTo("admin","company","user"),
   filterOrderForLoggedUser,
   filterOrderForStatus,
   findAllOrders
@@ -27,18 +29,31 @@ router.get(
 
 router.get(
   "/checkout-session/:cartId",
-  authService.allowedTo("user","admin"),
+   //authService.protect,
+  //authService.allowedTo("admin","company","user"),
   checkoutSession
 );
 
 router.route("/:cartId")
 .post(
-  authService.allowedTo("user", "admin", "company"),
+  authService.protect,
+  authService.allowedTo("admin","company","user"),
    createCashOrder
    );
+
+   router.route("/:guestId/bycart/:cartId")
+.post(
+  //authService.protect,
+  //authService.allowedTo("admin","company","user"),
+  createCashOrderBCartId
+   );
+
+ 
+
 router.get(
   "/",
-  authService.allowedTo("user", "admin", "company"),
+  //authService.protect,
+  //authService.allowedTo("admin","company","user"),
   filterOrderForLoggedUser,
   findAllOrders
 );
@@ -47,17 +62,20 @@ router.get("/:id", findSpecificOrder);
 
 router.put(
   "/:id/pay",
-  authService.allowedTo("admin", "company","user"),
+   //authService.protect,
+  //authService.allowedTo("admin","company","user"),
   updateOrderToPaid
 );
 router.put(
   "/:id/deliver",
-  authService.allowedTo("admin", "company","user"),
+  //authService.protect,
+  //authService.allowedTo("admin","company","user"),
   updateOrderToDelivered
 );
 router.put(
   "/:id/cancel",
-  authService.allowedTo("admin", "company","user"),
+  //authService.protect,
+  //authService.allowedTo("admin","company","user"),
   updateOrderToCancel
 );
 

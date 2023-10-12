@@ -6,8 +6,10 @@ const orderSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
-      required: [true, "Order must be belong to user"],
+     // required: [true, "Order must be belong to user"],
     },
+    // used foe not ogged users
+    guest:String,
     company: {
       type: mongoose.Schema.ObjectId,
       ref: "Company",

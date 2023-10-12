@@ -76,8 +76,8 @@ exports.protect = asyncHandler(async (req, res, next) => {
     token = req.headers.authorization.split(" ")[1];
   }
 
- 
-  if (!token) {
+
+  if (!token || token =='null') {
     return next(
       new ApiError(
         "You are not login, Please login to get access this route",
@@ -87,11 +87,12 @@ exports.protect = asyncHandler(async (req, res, next) => {
   }
 
   // 2) Verify token (no change happens, expired token)
+
   const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
   
   // 3) Check if user exists
   const currentUser = await User.findById(decoded.userId);
- //console.log('currentUser',currentUser)
+
 
   if (!currentUser) {
     return next(

@@ -24,10 +24,13 @@ const cartSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "User",
     },
+      // used foe not ogged users
+      guest:String,
     company: {
       type: mongoose.Schema.ObjectId,
       ref: "Company",
     },
+
   },
   { timestamps: true }
 );

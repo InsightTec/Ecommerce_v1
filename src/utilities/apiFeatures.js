@@ -119,7 +119,16 @@ class ApiFeatures {
       // 5) search
       if (this.queryString.keyword) {
         let query = {};
-        if (modelName === "user") {
+        if (modelName === "Products") {
+          query.$or = [
+            // use option i to make car ==Car==CAR same thing
+            { title: { $regex: this.queryString.keyword, $options: "i" } },
+            { titleTr: { $regex: this.queryString.keyword, $options: "i" } },
+            { titleAr: { $regex: this.queryString.keyword, $options: "i" } },
+            { description: { $regex: this.queryString.keyword, $options: "i" } },
+          ];
+        } 
+        else if (modelName === "user") {
           query.$or = [
             // use option i to make car ==Car==CAR same thing
             { name: { $regex: this.queryString.keyword, $options: "i" } },
@@ -128,8 +137,9 @@ class ApiFeatures {
         } else {
           query.$or = [
             { name: { $regex: this.queryString.keyword, $options: "i" }},
-            // { nameAr: { $regex: this.queryString.keyword, $options: "i" }},
-            // { nameTr: { $regex: this.queryString.keyword, $options: "i" }},
+            { nameAr: { $regex: this.queryString.keyword, $options: "i" }},
+            { nameTr: { $regex: this.queryString.keyword, $options: "i" }},
+            { description: { $regex: this.queryString.keyword, $options: "i" } },
           ];
         }
   
