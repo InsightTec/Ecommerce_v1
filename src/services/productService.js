@@ -306,16 +306,17 @@ exports.getProductsByCompanyAndCategory= asyncHandler(async (req, res, next) => 
    filter.company=companyId
    filter.category=categoryId
  
-
+console.log('filter',filter)
 
    // get total number of brands
    const documentsCounts = await productModel.countDocuments(filter);
+ 
 
    //Build query
    const apiFeatures = new ApiFeatures(productModel.find(filter), req.query)
      .paginate(documentsCounts)
      .filter()
-     .search(productModel)
+     .search('Products')
      .limitFields()
      .sort();
 

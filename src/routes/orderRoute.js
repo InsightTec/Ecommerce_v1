@@ -20,8 +20,8 @@ const router = express.Router();
 
 router.get(
   "/status/:orderStatus",
-  //authService.protect,
-  //authService.allowedTo("admin","company","user"),
+  authService.protect,
+  authService.allowedTo("admin","company","user"),
   filterOrderForLoggedUser,
   filterOrderForStatus,
   findAllOrders
@@ -52,8 +52,8 @@ router.route("/:cartId")
 
 router.get(
   "/",
-  //authService.protect,
-  //authService.allowedTo("admin","company","user"),
+  authService.protect,
+  authService.allowedTo("admin","company","user"),
   filterOrderForLoggedUser,
   findAllOrders
 );
@@ -62,20 +62,20 @@ router.get("/:id", findSpecificOrder);
 
 router.put(
   "/:id/pay",
-   //authService.protect,
-  //authService.allowedTo("admin","company","user"),
+   authService.protect,
+  authService.allowedTo("admin","company","user"),
   updateOrderToPaid
 );
 router.put(
   "/:id/deliver",
-  //authService.protect,
-  //authService.allowedTo("admin","company","user"),
+  authService.protect,
+  authService.allowedTo("admin","company","user"),
   updateOrderToDelivered
 );
 router.put(
   "/:id/cancel",
-  //authService.protect,
-  //authService.allowedTo("admin","company","user"),
+  authService.protect,
+  authService.allowedTo("admin","company","user"),
   updateOrderToCancel
 );
 

@@ -19,7 +19,7 @@ const authService = require('../services/authService');
 
 const router = express.Router();
 
-//router.use(authService.protect, authService.allowedTo('user','admin','company'));
+//router.use(authService.protect, authService.allowedTo('admin','company','user'));
 router
   .route('/')
   .post(
@@ -56,11 +56,20 @@ router.put('/applyCoupon', applyCoupon);
 
 router
   .route('/:itemId')
-  .put(updateCartItemQuantity)
-  .delete(removeSpecificCartItem);
+  .put(
+    authService.protect,
+     authService.allowedTo('admin','company','user'),
+    updateCartItemQuantity)
+  .delete(
+    authService.protect,
+    authService.allowedTo('admin','company','user'),
+    removeSpecificCartItem);
 
   router
   .route('/product/:productId')
-  .delete(removeSpecificCartProduct);
+  .delete(
+    authService.protect,
+    authService.allowedTo('admin','company','user'),
+    removeSpecificCartProduct);
 
 module.exports = router;
